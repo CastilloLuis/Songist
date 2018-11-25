@@ -1,6 +1,18 @@
-# event-app
+# Events App
 
-> A Vue.js project
+Web Application where you can pick a day and upload an important event, like a hackaton :)
+
+## Getting Started
+
+This was developed to play around vue, vuex, vue router...
+
+## Technologies
+
+* VUE JS
+* VUEX
+* VUE ROUTER
+* BUEFY
+* FIREBASE
 
 ## Build Setup
 
@@ -15,4 +27,10 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Authors
+
+* **Luis Castillo** - [GitHub](https://github.com/CastilloLuis)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
