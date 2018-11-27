@@ -1,4 +1,4 @@
-# Events App
+# Songist
 
 Web Application where you can search the info of your favorite song :)
 
@@ -13,6 +13,7 @@ This was developed to play around vue, vuex, vue router...
 * VUE ROUTER
 * BUEFY
 * AXIOS
+* MUSICDEMOS API
 
 ## Build Setup
 
