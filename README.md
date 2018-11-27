@@ -1,6 +1,6 @@
 # Events App
 
-Web Application where you can pick a day and upload an important event, like a hackaton :)
+Web Application where you can search the info of your favorite song :)
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ This was developed to play around vue, vuex, vue router...
 * VUEX
 * VUE ROUTER
 * BUEFY
-* FIREBASE
+* AXIOS
 
 ## Build Setup
 

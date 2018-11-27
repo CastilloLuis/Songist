@@ -3,7 +3,6 @@
     <app-navbar></app-navbar>
 
     <div class="container is fluid">
-      <router-view></router-view>
     </div>
     
     <app-footer></app-footer>
@@ -12,7 +11,7 @@
 
 <script>
 import NavBar from './components/layouts/navbar/NavBar';
-import Footer from './components/layouts/footer/footer';
+import Footer from './components/layouts/footer/Footer';
 
 export default {
   name: 'app',
