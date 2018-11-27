@@ -54,6 +54,6 @@ export default {
     }
     #home-search-input {
         margin-top: 5%;
-        margin-left: 35%;
+        margin-left: 32%;
     }
 </style>
