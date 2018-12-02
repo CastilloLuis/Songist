@@ -3,7 +3,9 @@
     <app-navbar></app-navbar>
 
     <div class="container is fluid">
-      <app-home-view></app-home-view>
+      <router-view></router-view>
+      <!--<app-home-view></app-home-view>
+      <app-lyrics-view></app-lyrics-view>-->
     </div>
     
     <app-footer></app-footer>
@@ -14,6 +16,7 @@
 import NavBar from './components/layouts/navbar/NavBar';
 import Footer from './components/layouts/footer/Footer';
 import Home from './views/Home';
+import Lyrics from './views/Lyrics';
 
 export default {
   name: 'app',
@@ -25,7 +28,8 @@ export default {
   components: {
     'app-navbar': NavBar,
     'app-footer': Footer,
-    'app-home-view': Home
+    'app-home-view': Home,
+    'app-lyrics-view': Lyrics
   }
 }
 </script>
