@@ -1,9 +1,12 @@
 <template>
 
     <div class="container is fluid">
+                
         <div id="home-logo">
+            <h1>{{artist}}</h1>
             <app-logo></app-logo>
         </div>
+
 
         <div id="home-find-btn" v-if="!isSearchActive">
             <app-find-button @dispatchFindClick="receiveDispatchFindClick($event)"></app-find-button>
@@ -19,6 +22,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import Logo from '../components/home-view/logo/Logo'
 import FindButton from '../components/home-view/buttons/find-button/Find-Button';
 import SearchInput from '../components/home-view/inputs/search-input/Search-Input';
@@ -35,9 +39,14 @@ export default {
     'app-find-button': FindButton,
     'app-search-input': SearchInput
   },
+  computed: {
+      ...mapGetters('artists', ['getArtist']),
+  },
   methods: {
       receiveDispatchFindClick () {
           this.isSearchActive = true;
+          console.log('xd')
+          this.$store.dispatch('getArtistByName')
       }
   }
 }

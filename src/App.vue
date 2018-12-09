@@ -4,8 +4,6 @@
 
     <div class="container is fluid">
       <router-view></router-view>
-      <!--<app-home-view></app-home-view>
-      <app-lyrics-view></app-lyrics-view>-->
     </div>
     
     <app-footer></app-footer>
