@@ -12,22 +12,24 @@ const mutations = {
 };
 
 const actions = {
-    getArtistByName ({commit}) {
+    getArtistByName: async ({commit}, name) => {
         console.log('getting artist by name :)');
-        commit('SET_ARTIST', 'LUIS EDUARDO CASTILLO GARCIA');
+        try {
+            const {status, data} = await axios.get(`https://musicdemons.com/api/v1/artist/organic-search/${name}`);
+            if (status === 20) {
+                console.warn(data);
+            } else {
+                console.log(status, data);
+            }
+            
+        } catch (e) {
+            console.warn(e);
+        }
     }
 };
 
-const getters = {
-    getArtist () {
-        return state.artist
-    }
-}
-
 export default {
-    namespaced: true,
     state,
     mutations,
     actions,
-    getters
 }

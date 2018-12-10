@@ -2,11 +2,11 @@
     <div class="bounceIn">
         <b-field label="" expanded>
             <b-field>
-                <b-input placeholder="Keyword" size="is-medium" :disabled="isSearching"></b-input>
-                <b-select placeholder="TYPE" size="is-medium" :disabled="isSearching">
-                    <option>ARTIST</option>
-                    <option>SONG</option>
-                    <option>LYRIC</option>
+                <b-input placeholder="Keyword" size="is-medium" v-model="searchData.keyword" :disabled="isSearching"></b-input>
+                <b-select placeholder="TYPE" size="is-medium" :disabled="isSearching" v-model="searchData.type">
+                    <option :value="'artist'">ARTIST</option>
+                    <option :value="'song'">SONG</option>
+                    <option :value="'lyric'">LYRIC</option>
                 </b-select>
                 <p class="control">
                     <button 
@@ -25,13 +25,44 @@
 export default {
     data () {
         return {
-            isSearching: false
+            isSearching: false,
+            searchData: {
+                keyword: '',
+                type: 'TYPE'
+            }
         }
     },
     
     methods: {
-        search () {
+        async search () {
             this.isSearching = true;
+            const { keyword, type } = {...this.searchData};
+            try {
+                const action = this.selectSearchType(type);
+                console.warn(action);
+                const data = await this.$store.dispatch(action, keyword);
+                console.warn(data);
+            } catch (e) {
+                console.warn(e);
+            }
+        },
+
+        selectSearchType (type) {
+            switch ((type).toLowerCase()) {
+                case 'artist': 
+                    return "getArtistByName"
+                break;
+
+                case 'song':
+                    console.log(keyword)
+                break;
+
+                case 'lyric':
+                    console.log(keyword)
+                break;
+
+                default: break;
+            }
         }
     }
 }
