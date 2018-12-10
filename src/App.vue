@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <app-navbar></app-navbar>
+  
+        <router-link v-if="this.$route.path != '/'" to="/" class="button is-primary is-rounded" style="position: absolute; left: 2%; top: 10%; z-index: 100000">
+          ⬅
+        </router-link>
 
     <div class="container is fluid">
       <router-view></router-view>
@@ -28,6 +32,9 @@ export default {
     'app-footer': Footer,
     'app-home-view': Home,
     'app-lyrics-view': Lyrics
+  },
+  created() {
+    console.log(this.$route.path)
   }
 }
 </script>
