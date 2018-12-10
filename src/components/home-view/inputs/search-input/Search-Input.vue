@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
+
 export default {
     data () {
         return {
@@ -32,6 +34,11 @@ export default {
             }
         }
     },
+
+    computed: {
+        ...mapState(['artist']),
+        ...mapGetters(['getArtist'])
+    },
     
     methods: {
         async search () {
@@ -39,9 +46,8 @@ export default {
             const { keyword, type } = {...this.searchData};
             try {
                 const action = this.selectSearchType(type);
-                console.warn(action);
-                const data = await this.$store.dispatch(action, keyword);
-                console.warn(data);
+                await this.$store.dispatch(action, keyword);
+                this.$emit('searchData', this.getArtist);
             } catch (e) {
                 console.warn(e);
             }

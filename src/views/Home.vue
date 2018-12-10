@@ -11,7 +11,7 @@
         </div>
 
         <div id="home-search-input" v-if="isSearchActive">
-            <app-search-input></app-search-input>
+            <app-search-input @searchData="handleSearch($event)"></app-search-input>
         </div>
 
     </div>
@@ -44,8 +44,16 @@ export default {
 
     receiveDispatchFindClick () {
         this.isSearchActive = true;
+    },
+
+    handleSearch ({status}) {
+        if ( status === 200 ) {
+            this.$router.push('/artist');
+        } else {
+            console.log(status)
+        }
     }
-    
+
   }
 
 }

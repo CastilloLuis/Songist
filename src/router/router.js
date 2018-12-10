@@ -11,7 +11,7 @@ Vue.use(Router);
 const routes = [
     {path: '/', component: Home},
     {path: '/lyrics', component: Lyrics},
-    {path: '/artist', component: Artists},
+    {path: '/artist', name: 'artist', component: Artists},
     {path: '/songs', component: Song}
 ];
 
