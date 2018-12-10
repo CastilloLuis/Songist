@@ -8,7 +8,7 @@
                     <img src="../assets/avatar.png" alt="" style="width: 100%;">
                 </div>
                 <div class=" has-text-centere">
-                    <div >
+                    <div>
                         <h1 class="title is-3">{{artistData.name}}</h1>
                         <h1 class="title is-6">
                             {{artistData.name}} was born in {{artistData.members[0].born}}
