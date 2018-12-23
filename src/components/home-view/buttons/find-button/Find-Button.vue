@@ -1,5 +1,5 @@
 <template>
-    <a class="button is-info is-rounded" @click="dispatchFindClick()">FIND YOUR SONG</a>
+    <a class="button is-info is-rounded" @click="dispatchGetStartedClick()">GET STARTED</a>
 </template>
 
 <script>
@@ -12,8 +12,8 @@ export default {
     },
     
     methods: {
-        dispatchFindClick () {
-            this.$emit('dispatchFindClick', 'dispatching find click');
+        dispatchGetStartedClick () {
+            this.$emit('dispatchGetStartedClick', 'dispatching find click');
         }
     }
 }

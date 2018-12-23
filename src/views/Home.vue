@@ -7,7 +7,7 @@
         </div>
 
         <div id="home-find-btn" v-if="!isSearchActive">
-            <app-find-button @dispatchFindClick="receiveDispatchFindClick($event)"></app-find-button>
+            <app-find-button @dispatchGetStartedClick="receiveDispatchGetStartedClick($event)"></app-find-button>
         </div>
 
         <div id="home-search-input" v-if="isSearchActive">
@@ -42,15 +42,21 @@ export default {
 
   methods: {
 
-    receiveDispatchFindClick () {
+    receiveDispatchGetStartedClick () {
         this.isSearchActive = true;
+        /*try {
+            const data = await this.$store.dispatch('getTopSongs');
+            this.$router.push('/top');
+        } catch(e) {
+            console.log('ERROR -> ', e);
+        }*/
     },
 
-    handleSearch ({status}) {
-        if ( status === 200 ) {
-            this.$router.push('/artist');
+    handleSearch (data) {
+        if ( data !== '' ) {
+            this.$router.push('/principal');
         } else {
-            console.log(status)
+            console.log(data)
         }
     }
 

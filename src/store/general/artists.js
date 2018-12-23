@@ -1,44 +1,45 @@
 import axios from 'axios';
 
 const state = {
-    artist: ''
+    artist: '',
+    artistTopTracks: []
 };
 
 const mutations = {
     SET_ARTIST (state, artist) {
         state.artist = artist;
+    },
+    SET_ARTIST_TOP_TRACKS (state, tracks) {
+        state.artistTopTracks = tracks;
     }
 };
 
 const actions = {
-    getArtistByName: async ({commit}, name) => {
+    getArtistByName: async ({commit}, artistName) => {
         try {
-            const { status, data } = await axios.get(`https://musicdemons.com/api/v1/artist/organic-search/${name}`);
-            const { id } = data[0];
-            if (status === 200) {
-                const config = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "https://musicdemons.com/api/v1/artist/12",
-                    "method": "GET",
-                    "headers": {
-                      "with": "songs,members"
-                    }
+            const { data: {data} } = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=artist:"${artistName}"`);
+            for (let element of data) {
+                const { name, id } = element.artist;
+                if(name.toLowerCase() === artistName.toLowerCase()) {
+                    const { data } = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/${id}/top?limit=50"`);
+                    commit('SET_ARTIST', element.artist);
+                    commit('SET_ARTIST_TOP_TRACKS', data);
+                    break
                 }
-                const data = await axios.get(`https://musicdemons.com/api/v1/artist/${id}`, config)
-                commit('SET_ARTIST', data);
-            } else {
-                console.log(status, data);
             }
         } catch (e) {
             console.warn(e);
         }
-    }
+    },
 };
 
 const getters = {
     getArtist (state) {
         return state.artist
+    },
+
+    getArtistTopTracks (state) {
+        return state.artistTopTracks
     }
 }
 

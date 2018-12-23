@@ -13,7 +13,7 @@ This was developed to play around vue, vuex, vue router...
 * VUE ROUTER
 * BUEFY
 * AXIOS
-* MUSICDEMOS API
+* DEEZER API
 
 ## Build Setup
 

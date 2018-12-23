@@ -15,10 +15,14 @@
 </template>
 
 <script>
+import Vue from 'vue';
 import NavBar from './components/layouts/navbar/NavBar';
 import Footer from './components/layouts/footer/Footer';
 import Home from './views/Home';
 import Lyrics from './views/Lyrics';
+import VueCarousel from 'vue-carousel';
+
+Vue.use(VueCarousel);
 
 export default {
   name: 'app',
