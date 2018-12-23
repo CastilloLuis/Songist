@@ -5,20 +5,11 @@
         <div class="column">
             <div class="">
                 <div class="container is-fluid">
-                    <img src="../assets/avatar.png" alt="" style="width: 100%;">
+                    <img :src="artistData.picture_big" alt="" style="width: 100%;">
                 </div>
                 <div class=" has-text-centere">
-                    <div>
+                    <div style="text-align: center">
                         <h1 class="title is-3">{{artistData.name}}</h1>
-                        <h1 class="title is-6">
-                            {{artistData.name}} was born in {{artistData.members[0].born}}
-                            <span v-if="artistData.members[0].died != ''">
-                                , and he died in {{artistData.members[0].died}}
-                            </span>
-                        </h1>
-                        <h1 class="title is-6">
-                            Career started in: <b-tag type="is-warning" style="font-size: 15px; width: 100px">{{artistData.year_started}}</b-tag>
-                        </h1>
                     </div>
                 </div>
             </div>
@@ -29,7 +20,7 @@
                  <b-tag type="is-warning" size="is-large" style="font-weight: bold;">🎶🎵 HITS 🎶🎵</b-tag>
             </div>
             <b-table
-                :data="songs"
+                :data="artistTopTracks"
                 paginated
                 per-page="5"
                 default-sort="user.released"
@@ -39,7 +30,7 @@
                 <template slot-scope="props">
 
                     <b-table-column field="id" label="ID" width="40" numeric centered sortable >
-                        {{ props.row.id }}
+                        {{ props.row.id }} 
                     </b-table-column>
 
                     <b-table-column field="title" label="Song Name" sortable centered>
@@ -47,10 +38,9 @@
                     </b-table-column>
 
                     <b-table-column field="released" label="Released" sortable centered>
-                        <span class="tag is-success">
-                            <!--{{ new Date(props.row.date).toLocaleDateString() }}-->
-                            {{new Date(props.row.released).toLocaleDateString()}}
-                        </span>
+                        <audio :id="props.row.id" :src="props.row.preview" :ref="props.row.id">
+                        </audio>
+                        <button @click="playPreview(props.row.id)" :ref="props.row.id+'action'" style="background-color: transparent; border: none; font-size: 25px; outline: none">🔈</button>
                     </b-table-column>
 
                 </template>
@@ -71,21 +61,37 @@ import { mapGetters } from 'vuex';
         data () {
             return {
                 artistData: '',
-                songs: []
+                artistTopTracks: [],
+                click: 0,
+                isPlaying: false
             }
         },
 
         computed: {
-            ...mapGetters(['getArtist'])
+            ...mapGetters(['getArtist', 'getArtistTopTracks'])
+        },
+
+        methods: {
+            playPreview(id) {
+                const PLAYER_ELEMENT = this.$refs[(id.toString())];
+                const PLAYER_ICON = this.$refs[`${id.toString()}action`];
+                if(!this.isPlaying) {
+                    this.isPlaying = true
+                    PLAYER_ELEMENT.play();
+                    PLAYER_ICON.innerHTML = "🔊"
+                } else {
+                    this.isPlaying = false
+                    PLAYER_ELEMENT.pause()
+                    PLAYER_ICON.innerHTML = "🔈"
+                }
+            }
         },
 
         created () {
-            const { data } = this.getArtist;
-            const { songs } = data;
-            this.artistData = data;
-            this.songs = songs;
-            console.warn(this.songs);
-            console.warn(this.artistData);
+            this.artistData = this.getArtist;
+            this.artistTopTracks = this.getArtistTopTracks.data;
+            console.log(this.artistData)
+            console.log(this.artistTopTracks)
         }
     }
 </script>

@@ -54,7 +54,7 @@ export default {
 
     handleSearch (data) {
         if ( data !== '' ) {
-            this.$router.push('/principal');
+            this.$router.push('/artist');
         } else {
             console.log(data)
         }

@@ -17,20 +17,14 @@ import Cover from '../components/general/TopSlider/Top';
         },
         data () {
             return {
-                artistData: '',
-                artistTopTracks: []
             }
         },
 
         computed: {
-            ...mapGetters(['getArtist', 'getArtistTopTracks'])
         },
 
         created () {
-            this.artistData = this.getArtist;
-            this.artistTopTracks = this.getArtistTopTracks;
-            console.log(this.artistData)
-            console.log(this.artistTopTracks)
+
         }
     }
 </script>
