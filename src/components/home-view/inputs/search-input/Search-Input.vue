@@ -47,9 +47,10 @@ export default {
             try {
                 const action = this.selectSearchType(type);
                 await this.$store.dispatch(action, keyword);
-                this.$emit('searchData', this.getArtist);
+                this.$emit('status', {type, status: 200});
             } catch (e) {
                 console.warn(e);
+                this.$emit('status', {type: null, status: 400});
             }
         },
 
@@ -61,6 +62,7 @@ export default {
 
                 case 'song':
                     console.log(keyword)
+                    return 'getSongByName'
                 break;
 
                 case 'lyric':

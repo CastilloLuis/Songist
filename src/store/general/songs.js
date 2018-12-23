@@ -1,12 +1,17 @@
 import axios from 'axios';
 
 const state = {
-    topSongs: []
+    topSongs: [],
+    searchedSongData: ''
 };
 
 const mutations = {
     SET_TOPSONGS (state, songs) {
         state.topSongs = songs;
+    },
+
+    SET_SEARCHED_SONG (state, song) {
+        state.searchedSongData = song;
     }
 };
 
@@ -19,12 +24,25 @@ const actions = {
         } catch (e) {
             console.log('Error -> ', tracks);
         }
+    },
+    
+    getSongByName: async({commit}, key) => {
+        try {
+            const data = await axios.get(`https://api.deezer.com/search?q=track:"${key}"`);
+            console.log(data);
+        } catch (e) {
+            console.log('Error -> ', e);
+        }
     }
 };
 
 const getters = {
     getTopSongs(state) {
         return state.topSongs
+    },
+
+    getSearchedSong(state) {
+        return state.searchedSongData
     }
 };
 

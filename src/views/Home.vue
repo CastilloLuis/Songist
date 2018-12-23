@@ -52,11 +52,20 @@ export default {
         }*/
     },
 
-    handleSearch (data) {
-        if ( data !== '' ) {
-            this.$router.push('/artist');
+    handleSearch ({status, type}) {
+        if ( status === 200 ) {
+            this.$router.push(this.handleRoutes(type));
         } else {
-            console.log(data)
+            console.log('STATUS', status);
+        }
+    },
+
+    handleRoutes (type) {
+        switch (type) {
+            case 'artist':
+                return '/artist'
+            case 'song':
+                return '/song'
         }
     }
 
