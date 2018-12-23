@@ -11,7 +11,7 @@
         </div>
 
         <div id="home-search-input" v-if="isSearchActive">
-            <app-search-input @searchData="handleSearch($event)"></app-search-input>
+            <app-search-input @status="handleSearch($event)"></app-search-input>
         </div>
 
     </div>
@@ -44,15 +44,11 @@ export default {
 
     receiveDispatchGetStartedClick () {
         this.isSearchActive = true;
-        /*try {
-            const data = await this.$store.dispatch('getTopSongs');
-            this.$router.push('/top');
-        } catch(e) {
-            console.log('ERROR -> ', e);
-        }*/
     },
 
     handleSearch ({status, type}) {
+        console.log(status)
+        console.log(type)
         if ( status === 200 ) {
             this.$router.push(this.handleRoutes(type));
         } else {

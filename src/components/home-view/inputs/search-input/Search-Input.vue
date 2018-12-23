@@ -44,10 +44,13 @@ export default {
         async search () {
             this.isSearching = true;
             const { keyword, type } = {...this.searchData};
+            console.log(keyword)
+            console.log(type)
             try {
                 const action = this.selectSearchType(type);
+                console.log(action)
                 await this.$store.dispatch(action, keyword);
-                this.$emit('status', {type, status: 200});
+                this.$emit('status', {type: type, status: 200});
             } catch (e) {
                 console.warn(e);
                 this.$emit('status', {type: null, status: 400});
@@ -61,12 +64,10 @@ export default {
                 break;
 
                 case 'song':
-                    console.log(keyword)
-                    return 'getSongByName'
+                    return 'getSongsByName'
                 break;
 
                 case 'lyric':
-                    console.log(keyword)
                 break;
 
                 default: break;
