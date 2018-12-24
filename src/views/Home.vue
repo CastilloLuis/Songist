@@ -8,7 +8,7 @@
                     <div id="home-logo">
                         <app-logo></app-logo>
                     </div>
-                    <br/><br/><br/>
+                    <br/>
                     <div id="home-find-btn" v-if="!isSearchActive">
                         <app-find-button @dispatchGetStartedClick="receiveDispatchGetStartedClick($event)"></app-find-button>
                     </div>
@@ -23,6 +23,8 @@
             </div>
         </div>
     </div>
+
+    <app-footer></app-footer>
 </section>
 
 </template>
@@ -31,6 +33,7 @@
 import Logo from '../components/home-view/logo/Logo'
 import FindButton from '../components/home-view/buttons/find-button/Find-Button';
 import SearchInput from '../components/home-view/inputs/search-input/Search-Input';
+import Footer from '../components/layouts/footer/Footer';
 
 export default {
   name: 'home',
@@ -45,7 +48,8 @@ export default {
   components: {
     'app-logo': Logo,
     'app-find-button': FindButton,
-    'app-search-input': SearchInput
+    'app-search-input': SearchInput,
+    'app-footer': Footer
   },
 
   methods: {
@@ -80,7 +84,7 @@ export default {
 
 <style>
     .home-wrapper {
-        margin-top: 10%
+        margin-top: 5%
     }
     .home-search-input {
        

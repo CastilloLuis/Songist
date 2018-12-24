@@ -25,7 +25,8 @@ const actions = {
         try{
             const { data: { tracks, artists } } = await axios.get('https://cors-anywhere.herokuapp.com/http://api.deezer.com/chart');
             commit('SET_TOPSONGS', tracks);
-            commit('SET_TOP_ARTISTS', artists);
+            console.log(tracks)
+            commit('SET_TOP_ARTISTS', artists); // not used, yet
         } catch (e) {
             console.log('Error -> ', tracks);
         }

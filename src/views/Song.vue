@@ -14,7 +14,7 @@
                 :data="songsResult"
                 hoverable
                 paginated
-                per-page="5"
+                per-page="3"
                 default-sort="user.released"
                 style="background-color: white; padding: 10px 10px 10px 10px"
             >

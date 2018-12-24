@@ -1,13 +1,13 @@
 <template>
 
-<section style="padding: 20px 20px 20px 20px; margin-top: 0%">
+<section style="padding: 40px 40px 24px 40px; margin-top: 0%;">
     <div class="columns is-full-mobile is-two-thirds-tablet" >
         <div v-if="notFound" class="column has-text-centered" style="margin-top: 20%">
             <h1 style="color: white;" class="title is-3">Sorry, there is not result 😔</h1>
             <router-link to="/"><a class="button is-warning is-rounded" style="font-weight: bold;">🔙 GO BACK</a></router-link>
         </div>
         <div class="column" v-if="!notFound">
-            <div class="" style="margin-top: 20%">
+            <div class="" style="margin-top: 10%">
                 <div class="container is-fluid">
                     <img :src="artistData.picture_big" alt="" style="width: 100%; border-radius: 50%; border: 4px solid rgb(221, 221, 221)">
                 </div>
@@ -26,9 +26,9 @@
             <b-table
                 :data="artistTopTracks"
                 paginated
-                per-page="5"
+                :per-page="3"
                 default-sort="user.released"
-                style="background-color: white; padding: 10px 10px 10px 10px"
+                style="background-color: white;"
             >
 
                 <template slot-scope="props">
