@@ -6,7 +6,6 @@
                 <b-select placeholder="TYPE" size="is-medium" :disabled="isSearching" v-model="searchData.type">
                     <option :value="'artist'">ARTIST</option>
                     <option :value="'song'">SONG</option>
-                    <option :value="'lyric'">LYRIC</option>
                 </b-select>
                 <p class="control">
                     <button 
@@ -65,9 +64,6 @@ export default {
 
                 case 'song':
                     return 'getSongsByName'
-                break;
-
-                case 'lyric':
                 break;
 
                 default: break;

@@ -19,7 +19,6 @@ import Vue from 'vue';
 import NavBar from './components/layouts/navbar/NavBar';
 import Footer from './components/layouts/footer/Footer';
 import Home from './views/Home';
-import Lyrics from './views/Lyrics';
 import VueCarousel from 'vue-carousel';
 
 Vue.use(VueCarousel);
@@ -35,7 +34,6 @@ export default {
     'app-navbar': NavBar,
     'app-footer': Footer,
     'app-home-view': Home,
-    'app-lyrics-view': Lyrics
   },
   created() {
     console.log(this.$route.path)

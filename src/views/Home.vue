@@ -14,6 +14,10 @@
             <app-search-input @status="handleSearch($event)"></app-search-input>
         </div>
 
+        <div v-if="!isSearchActive">
+            <router-link to="/principal"><a class="button is-primary" style="border: none;display: block; margin: auto; background: transparent; font-weight: 400; letter-spacing: 2px">I just wanna take a tour</a></router-link>
+        </div>
+
     </div>
 
 
