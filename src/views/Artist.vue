@@ -1,15 +1,15 @@
 <template>
 
 <section style="padding: 20px 20px 20px 20px; margin-top: 0%">
-    <div class="columns">
+    <div class="columns is-full-mobile is-two-thirds-tablet" >
         <div class="column">
-            <div class="">
+            <div class="" style="margin-top: 20%">
                 <div class="container is-fluid">
                     <img :src="artistData.picture_big" alt="" style="width: 100%;">
                 </div>
                 <div class=" has-text-centere">
                     <div style="text-align: center">
-                        <h1 class="title is-3">{{artistData.name}}</h1>
+                        <h1 class="title is-3" style="color: white;">{{artistData.name}}</h1>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 <template>
-    <a class="button is-info is-rounded" @click="dispatchGetStartedClick()">GET STARTED</a>
+    <a class="button is-info is-rounded" style="display:block;margin:auto;" @click="dispatchGetStartedClick()">GET STARTED</a>
 </template>
 
 <script>

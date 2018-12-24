@@ -65,7 +65,7 @@ export default {
 
 .text {
   color: white;
-  font-size: 15px;
+  font-size: 20px;
   position: absolute;
   top: 50%;
   left: 50%;

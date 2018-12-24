@@ -2,11 +2,7 @@
   <div id="app">
     <app-navbar></app-navbar>
   
-        <router-link v-if="this.$route.path != '/'" to="/" class="button is-primary is-rounded" style="position: absolute; left: 2%; top: 10%; z-index: 100000">
-          ⬅
-        </router-link>
-
-    <div class="container is fluid">
+    <div class="container is-fluid">
       <router-view></router-view>
     </div>
     

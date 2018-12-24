@@ -53,7 +53,7 @@
         <b-modal v-if="isModalActive" :active.sync="isModalActive" :width="640" scroll="keep">
             <div class="card" style="background-color: transparent">
                 <div class="card-image">
-                    <img :src="modalData.album.cover_big" alt="Image" style="border-radius: 50%; display:block; margin:auto;">
+                    <img :src="modalData.album.cover_big" alt="Image" style="width: 50%; border-radius: 50%; margin-bottom: 5%; display:block; margin:auto;">
                 </div>
                 <div class="card-content" style="background-color: white; border-radius: 2%">
                     <div class="media">
@@ -64,7 +64,7 @@
                         </div>
                         <div class="media-content">
                             <p class="title is-4">{{modalData.artist.name}}</p>
-                            <a class="button">Get Top Tracks</a>
+                            <a class="button" style="margin-left: 70%">Get Top Tracks</a>
                         </div>
                     </div>
 
@@ -99,20 +99,6 @@ import { mapGetters } from 'vuex';
         },
 
         methods: {
-            playPreview(id) {
-                const PLAYER_ELEMENT = this.$refs[(id.toString())];
-                const PLAYER_ICON = this.$refs[`${id.toString()}action`];
-                if(!this.isPlaying) { 
-                    this.isPlaying = true
-                    PLAYER_ELEMENT.play();
-                    PLAYER_ICON.innerHTML = "🔊"
-                } else {
-                    this.isPlaying = false
-                    PLAYER_ELEMENT.pause()
-                    PLAYER_ICON.innerHTML = "🔈"
-                }
-            },
-
             activeModal(data) {
                 console.log(data);
                 this.isModalActive = true;

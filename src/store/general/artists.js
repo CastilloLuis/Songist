@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const state = {
     artist: '',
-    artistTopTracks: []
+    artistTopTracks: [],
 };
 
 const mutations = {
@@ -11,7 +11,7 @@ const mutations = {
     },
     SET_ARTIST_TOP_TRACKS (state, tracks) {
         state.artistTopTracks = tracks;
-    }
+    },
 };
 
 const actions = {
@@ -20,7 +20,7 @@ const actions = {
             const { data: {data} } = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=artist:"${artistName}"`);
             for (let element of data) {
                 const { name, id } = element.artist;
-                if(name.toLowerCase() === artistName.toLowerCase()) {
+                if(name.toLowerCase().includes(artistName.toLowerCase())) {
                     const { data } = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/artist/${id}/top?limit=50"`);
                     commit('SET_ARTIST', element.artist);
                     commit('SET_ARTIST_TOP_TRACKS', data);
@@ -30,7 +30,7 @@ const actions = {
         } catch (e) {
             console.warn(e);
         }
-    },
+    }
 };
 
 const getters = {

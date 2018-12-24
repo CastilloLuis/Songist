@@ -1,12 +1,12 @@
 <template>
 
-    <div class="container is fluid">
+    <div class="container is fluid home">
                 
-        <div id="home-logo">
+        <div id="home-logo" style="display: block; margin: auto;">
             <app-logo></app-logo>
         </div>
 
-        <div id="home-find-btn" v-if="!isSearchActive">
+        <div id="home-find-btn" v-if="!isSearchActive" style="display: block; margin: auto; padding: 25px">
             <app-find-button @dispatchGetStartedClick="receiveDispatchGetStartedClick($event)"></app-find-button>
         </div>
 
@@ -15,7 +15,7 @@
         </div>
 
         <div v-if="!isSearchActive">
-            <router-link to="/principal"><a class="button is-primary" style="border: none;display: block; margin: auto; background: transparent; font-weight: 400; letter-spacing: 2px">I just wanna take a tour</a></router-link>
+            <router-link to="/principal"><a class="button is-primary" style="border: none;display: block; margin: auto; background: transparent; font-weight: 500; letter-spacing: -0.5px">Just, recommend me songs</a></router-link>
         </div>
 
     </div>
@@ -86,5 +86,11 @@ export default {
     #home-search-input {
         margin-top: 5%;
         margin-left: 32%;
+    }
+
+    @media screen and (max-width: 800px) {
+        .home {
+            margin-top: 25%
+        }
     }
 </style>

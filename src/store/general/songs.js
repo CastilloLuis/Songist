@@ -2,7 +2,8 @@ import axios from 'axios';
 
 const state = {
     topSongs: [],
-    searchedSongData: []
+    searchedSongData: [],
+    topArtists: []
 };
 
 const mutations = {
@@ -12,15 +13,19 @@ const mutations = {
 
     SET_SEARCHED_SONG (state, song) {
         state.searchedSongData = song;
+    },
+
+    SET_TOP_ARTISTS (state, artists) {
+        state.topArtists = artists;
     }
 };
 
 const actions = {
     getTopSongs: async({commit}) => {
         try{
-            const { data: { tracks } } = await axios.get('https://cors-anywhere.herokuapp.com/http://api.deezer.com/chart');
-            console.log(tracks);
+            const { data: { tracks, artists } } = await axios.get('https://cors-anywhere.herokuapp.com/http://api.deezer.com/chart');
             commit('SET_TOPSONGS', tracks);
+            commit('SET_TOP_ARTISTS', artists);
         } catch (e) {
             console.log('Error -> ', tracks);
         }
@@ -43,6 +48,10 @@ const getters = {
 
     getSearchedSong(state) {
         return state.searchedSongData
+    },
+
+    getTopArtists(state) {
+        return state.topArtists
     }
 };
 
