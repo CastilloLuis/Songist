@@ -1,20 +1,32 @@
 <template>
-    <div class="container" :id="id" @mouseover="hoverEffect(true, id)" @mouseout="hoverEffect(false, id)">
-        <img :src="img" alt="Avatar" class="image">
-        <div class="overlay" :ref="'overlayRef'+id">
-            <div class="text">
-                {{title}}
-                <hr/>    
-                {{artistName}}
+    <section>
+        <div v-if="!mobile" class="container" :id="id" @mouseover="hoverEffect(true, id)" @mouseout="hoverEffect(false, id)">
+            <img :src="img" alt="Avatar" class="image">
+            <div class="overlay" :ref="'overlayRef'+id">
+                <div class="text">
+                    {{title}}
+                    <hr/>    
+                    {{artistName}}
+                </div>
             </div>
-            
         </div>
-    </div>
+        <div v-if="mobile">
+            <img :src="img" alt="Avatar" class="image">
+            <br/>
+            <div class="card">
+                <div class="card-content has-text-centered">
+                    <p class="title is-6">{{title}}</p>
+                    <hr/>
+                    <p class="title is-6">{{artistName}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
 export default {
-    props: ['img', 'title', 'id', 'artistName'],
+    props: ['img', 'title', 'id', 'artistName', 'mobile'],
     methods: {
         hoverEffect(isHovered, id) {
             console.log('id', id);
@@ -74,4 +86,12 @@ export default {
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+    @media screen and (max-width: 800px) {
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    }
 </style>

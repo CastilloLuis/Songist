@@ -5,7 +5,7 @@
         <div class="column">
             <div class="" style="margin-top: 20%">
                 <div class="container is-fluid">
-                    <img :src="artistData.picture_big" alt="" style="width: 100%;">
+                    <img :src="artistData.picture_big" alt="" style="width: 100%; border-radius: 50%; border: 4px solid rgb(221, 221, 221)">
                 </div>
                 <div class=" has-text-centere">
                     <div style="text-align: center">
@@ -37,7 +37,7 @@
                         {{ props.row.title }}
                     </b-table-column>
 
-                    <b-table-column field="released" label="Released" sortable centered>
+                    <b-table-column field="preview" label="Preview" sortable centered>
                         <audio :id="props.row.id" :src="props.row.preview" :ref="props.row.id">
                         </audio>
                         <button @click="playPreview(props.row.id)" :ref="props.row.id+'action'" style="background-color: transparent; border: none; font-size: 25px; outline: none">🔈</button>

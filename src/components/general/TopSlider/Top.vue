@@ -1,11 +1,20 @@
 <template>
-        <div>
+    <div>
+        <section v-if="!isMobile" >
             <carousel :perPage="2" :paginationEnabled="false">
                 <slide v-for="(track, index) in tracks" v-bind:key="index">
-                    <Cover :img="track.album.cover_xl" :title="track.title" :id="index" :artistName="track.artist.name"></Cover>
+                    <Cover :img="track.album.cover_xl" :mobile="false" :title="track.title" :id="index" :artistName="track.artist.name"></Cover>
                 </slide>
             </carousel>
-        </div>
+        </section>
+        <section v-if="isMobile" >
+            <carousel :perPage="1" :paginationEnabled="false" :autoplayTimeout="1000">
+                <slide v-for="(track, index) in tracks" v-bind:key="index">
+                    <Cover :img="track.album.cover_xl" :mobile="true" :title="track.title" :id="index" :artistName="track.artist.name"></Cover>
+                </slide>
+            </carousel>
+        </section>
+    </div>
 </template>
 
 <script>
@@ -18,7 +27,8 @@ import Cover from './Cover';
         },
         data () {
             return {
-                tracks: []
+                tracks: [],
+                isMobile: false
             }
         },
 
@@ -26,7 +36,26 @@ import Cover from './Cover';
             ...mapGetters(['getTopSongs'])
         },
 
+        methods: {
+    	detectmob() { 
+            if( navigator.userAgent.match(/Android/i)
+                //|| navigator.userAgent.match(/webOS/i)
+                || navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+                || navigator.userAgent.match(/BlackBerry/i)
+                || navigator.userAgent.match(/Windows Phone/i)
+                ){
+                    console.log(navigator.userAgent)
+                    this.isMobile = true;
+                } else {
+                    this.isMobile = false;
+                }
+            }
+        },
+
         async created () {
+            this.detectmob();
             await this.$store.dispatch('getTopSongs');
             const { data } = this.getTopSongs;
             console.log(data)

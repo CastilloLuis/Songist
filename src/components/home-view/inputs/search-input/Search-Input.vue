@@ -1,8 +1,8 @@
 <template>
     <div class="bounceIn">
-        <b-field label="" expanded>
+        <b-field label="">
             <b-field>
-                <b-input placeholder="Keyword" size="is-medium" v-model="searchData.keyword" :disabled="isSearching"></b-input>
+                <b-input placeholder="Keyword" class=" is-expanded" size="is-medium" v-model="searchData.keyword" :disabled="isSearching"></b-input>
                 <b-select placeholder="TYPE" size="is-medium" :disabled="isSearching" v-model="searchData.type">
                     <option :value="'artist'">ARTIST</option>
                     <option :value="'song'">SONG</option>
