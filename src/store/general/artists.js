@@ -13,7 +13,7 @@ const mutations = {
         state.artistTopTracks = tracks;
     },
 };
-
+ 
 const actions = {
     getArtistByName: async ({commit}, artistName) => {
         try {

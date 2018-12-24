@@ -2,7 +2,11 @@
 
 <section style="padding: 20px 20px 20px 20px; margin-top: 0%">
     <div class="columns is-full-mobile is-two-thirds-tablet" >
-        <div class="column">
+        <div v-if="notFound" class="column has-text-centered" style="margin-top: 20%">
+            <h1 style="color: white;" class="title is-3">Sorry, there is not result 😔</h1>
+            <router-link to="/"><a class="button is-warning is-rounded" style="font-weight: bold;">🔙 GO BACK</a></router-link>
+        </div>
+        <div class="column" v-if="!notFound">
             <div class="" style="margin-top: 20%">
                 <div class="container is-fluid">
                     <img :src="artistData.picture_big" alt="" style="width: 100%; border-radius: 50%; border: 4px solid rgb(221, 221, 221)">
@@ -15,7 +19,7 @@
             </div>
 
         </div>
-        <div class="column is-three-fifths">
+        <div class="column is-three-fifths" v-if="!notFound">
             <div style="text-align: center; margin-bottom: 1%;">
                  <b-tag type="is-warning" size="is-large" style="font-weight: bold;">🎶🎵 HITS 🎶🎵</b-tag>
             </div>
@@ -63,7 +67,8 @@ import { mapGetters } from 'vuex';
                 artistData: '',
                 artistTopTracks: [],
                 click: 0,
-                isPlaying: false
+                isPlaying: false,
+                notFound: false
             }
         },
 
@@ -90,6 +95,9 @@ import { mapGetters } from 'vuex';
         created () {
             this.artistData = this.getArtist;
             this.artistTopTracks = this.getArtistTopTracks.data;
+            if(typeof this.artistTopTracks === 'undefined') {
+                this.notFound = true;
+            }
             console.log(this.artistData)
             console.log(this.artistTopTracks)
         }
