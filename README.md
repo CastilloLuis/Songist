@@ -1,6 +1,6 @@
 # Songist
 
-Web Application where you can search the info of your favorite song :)
+Web Application where you can search artists or songs :)
 
 ## About the app
 
