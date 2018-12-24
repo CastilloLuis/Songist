@@ -16,7 +16,6 @@
                     <div id="home-search-input" v-if="isSearchActive">
                         <app-search-input @status="handleSearch($event)"></app-search-input>
                     </div>
-
                     <div v-if="!isSearchActive">
                         <router-link to="/principal"><a class="button is-primary" style="border: none;display: block; margin: auto; background: transparent; font-weight: 500; letter-spacing: -0.5px">Just recommend me songs</a></router-link>
                     </div>

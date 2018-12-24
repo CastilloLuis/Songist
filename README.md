@@ -2,9 +2,9 @@
 
 Web Application where you can search the info of your favorite song :)
 
-## Getting Started
+## About the app
 
-This was developed to play around vue, vuex, vue router...
+This was developed to play around vue, vuex, vue router... I didn't want to create another boring todolist :/. This was developed really quickly.
 
 ## Technologies
 
@@ -17,7 +17,12 @@ This was developed to play around vue, vuex, vue router...
 
 ## Build Setup
 
+
 ``` bash
+
+# clone the repo
+git clone https://github.com/CastilloLuis/Songist.git
+
 # install dependencies
 npm install
 
