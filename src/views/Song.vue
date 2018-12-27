@@ -105,7 +105,6 @@ import { mapGetters } from 'vuex';
 
         methods: {
             activeModal(data) {
-                console.log(data);
                 this.isModalActive = true;
                 this.modalData = data;
             }
@@ -114,7 +113,6 @@ import { mapGetters } from 'vuex';
         created () {
             const { data } = this.getSearchedSong;
             this.songsResult = data;
-            console.log(this.songsResult)
             if(this.songsResult.length === 0){
                 this.notFound = true;
             }

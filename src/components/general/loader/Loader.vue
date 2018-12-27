@@ -7,7 +7,3 @@ export default {
     props: ['isLoaderActive', 'isLoaderCanceled']
 }
 </script>
-
-<style>
-    
-</style>

@@ -23,7 +23,6 @@
             </div>
         </div>
     </div>
-
     <app-footer></app-footer>
 </section>
 
@@ -59,12 +58,10 @@ export default {
     },
 
     handleSearch ({status, type}) {
-        console.log(status)
-        console.log(type)
         if ( status === 200 ) {
             this.$router.push(this.handleRoutes(type));
         } else {
-            console.log('STATUS', status);
+            console.warn('STATUS', status);
         }
     },
 
@@ -86,10 +83,6 @@ export default {
     .home-wrapper {
         margin-top: 5%
     }
-    .home-search-input {
-       
-    }
-
     @media screen and (max-width: 800px) {
         .home-wrapper {
             margin-top: 25%

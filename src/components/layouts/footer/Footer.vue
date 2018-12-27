@@ -1,5 +1,5 @@
 <template>
-    <div class="footer">
+    <div class="footer" style="background-color: transparent;position: absolute; bottom: 0; width: 100%;">
         <div class="content has-text-centered">
             <p>
             Made with 🍔
@@ -8,7 +8,3 @@
         </div>
     </div>
 </template>
-
-<style>
-    @import './Footer.css';
-</style>

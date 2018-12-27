@@ -29,7 +29,6 @@ export default {
     props: ['img', 'title', 'id', 'artistName', 'mobile'],
     methods: {
         hoverEffect(isHovered, id) {
-            console.log('id', id);
             const reference = 'overlayRef'+id;
             let element = this.$refs[reference];
             isHovered ? 

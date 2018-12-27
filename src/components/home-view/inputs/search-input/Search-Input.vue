@@ -43,11 +43,8 @@ export default {
         async search () {
             this.isSearching = true;
             const { keyword, type } = {...this.searchData};
-            console.log(keyword)
-            console.log(type)
             try {
                 const action = this.selectSearchType(type);
-                console.log(action)
                 await this.$store.dispatch(action, keyword);
                 this.$emit('status', {type: type, status: 200});
             } catch (e) {

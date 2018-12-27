@@ -98,8 +98,6 @@ import { mapGetters } from 'vuex';
             if(typeof this.artistTopTracks === 'undefined') {
                 this.notFound = true;
             }
-            console.log(this.artistData)
-            console.log(this.artistTopTracks)
         }
     }
 </script>

@@ -1,14 +1,14 @@
 <template>
     <div>
         <section v-if="!isMobile" >
-            <carousel :perPage="2" :paginationEnabled="false">
+            <carousel :perPage="2" :paginationEnabled="false" :autoplayTimeout="1000" :loop="true">
                 <slide v-for="(track, index) in tracks" v-bind:key="index">
                     <Cover :img="track.album.cover_xl" :mobile="false" :title="track.title" :id="index" :artistName="track.artist.name"></Cover>
                 </slide>
             </carousel>
         </section>
         <section v-if="isMobile" >
-            <carousel :perPage="1" :paginationEnabled="false" :autoplayTimeout="1000">
+            <carousel :perPage="1" :paginationEnabled="false" :autoplayTimeout="1000" :loop="true">
                 <slide v-for="(track, index) in tracks" v-bind:key="index">
                     <Cover :img="track.album.cover_xl" :mobile="true" :title="track.title" :id="index" :artistName="track.artist.name"></Cover>
                 </slide>
@@ -46,7 +46,6 @@ import Cover from './Cover';
                 || navigator.userAgent.match(/BlackBerry/i)
                 || navigator.userAgent.match(/Windows Phone/i)
                 ){
-                    console.log(navigator.userAgent)
                     this.isMobile = true;
                 } else {
                     this.isMobile = false;
@@ -58,7 +57,6 @@ import Cover from './Cover';
             this.detectmob();
             await this.$store.dispatch('getTopSongs');
             const { data } = this.getTopSongs;
-            console.log(data)
             this.tracks = data;
             this.$emit('sliderLoaded', true)
         }

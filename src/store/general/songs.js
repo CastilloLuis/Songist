@@ -25,10 +25,9 @@ const actions = {
         try{
             const { data: { tracks, artists } } = await axios.get('https://cors-anywhere.herokuapp.com/http://api.deezer.com/chart');
             commit('SET_TOPSONGS', tracks);
-            console.log(tracks)
             commit('SET_TOP_ARTISTS', artists); // not used, yet
         } catch (e) {
-            console.log('Error -> ', tracks);
+            console.warn('Error -> ', tracks);
         }
     },
     
@@ -37,7 +36,7 @@ const actions = {
             const { data } = await axios.get(`https://cors-anywhere.herokuapp.com/https://api.deezer.com/search?q=track:"${key}"`);
             commit('SET_SEARCHED_SONG', data);
         } catch (e) {
-            console.log('Error -> ', e);
+            console.warn('Error -> ', e);
         }
     }
 };
