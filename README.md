@@ -4,7 +4,7 @@ Web Application where you can search artists or songs :)
 
 ## About the app
 
-This was developed to play around vue, vuex, vue router... I didn't want to create another boring todolist :/. This was developed really quickly.
+This was developed to play around vue, vuex, vue router... I didn't want to create another todolist :/. This was developed really quickly just for fun.
 
 ## Technologies
 
